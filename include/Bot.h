@@ -3,48 +3,56 @@
 
 #include "Board.h"
 
-enum BotLevel
-{
-    Easy = 0,
-    Medium,
-    Hard
+enum BotLevel { Easy, Medium, Hard };
+
+// Internal struct for Minimax coordinates
+struct Point {
+    int r;
+    int c;
 };
 
-class Bot
-{
+class Bot {
 private:
     BotLevel level;
     char symbol;
     char enemySymbol;
 
-public:
-    Bot(BotLevel l, char s = 'O', char enemy = 'X');
+    const int INF = 100000000;
 
-    char getSymbol() const;
+    // --- MINIMAX UTILITY FUNCTIONS (Silent execution) ---
+    
+    // Check for win on the simulated board
+    bool checkWinSilent(Board &board, char sym) const;
+    
+    // Check if an empty cell has adjacent pieces
+    bool hasNeighbor(Board &board, int r, int c) const;
+    
+    // Get a list of potential moves to evaluate
+    int getCandidateMoves(Board &board, Point candidates[100]) const;
+    
+    // Evaluate score for a 5-cell window
+    int evaluateWindow(int botCount, int playerCount) const;
+    
+    // Evaluate the overall board state
+    int evaluateBoard(Board &board) const;
+    
+    // Core Minimax algorithm with Alpha-Beta Pruning
+    int minimax(Board &board, int depth, int maxDepth, int alpha, int beta, bool isMax);
 
-    void makeMove(Board &board, int &row, int &col);
-
-private:
+    // --- MOVE STRATEGIES ---
+    
+    // Pick a random available move
     void makeEasyMove(Board &board, int &row, int &col);
-    void makeMediumMove(Board &board, int &row, int &col);
-    void makeHardMove(Board &board, int &row, int &col);
+    
+    // Pick optimal move using Minimax
+    void makeSmartMove(Board &board, int &row, int &col, int targetDepth);
 
-    bool canWin(Board &board,
-                int row,
-                int col,
-                char checkSymbol);
-
-    int countDirection(Board &board,
-                       int row,
-                       int col,
-                       char checkSymbol,
-                       int dx,
-                       int dy);
-
-    int evaluateCell(Board &board,
-                     int row,
-                     int col,
-                     char checkSymbol);
+public:
+    Bot(BotLevel l, char s, char enemy);
+    char getSymbol() const;
+    
+    // Main interface to execute a move
+    void makeMove(Board &board, int &row, int &col);
 };
 
-#endif
+#endif // BOT_H
