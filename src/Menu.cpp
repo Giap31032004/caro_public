@@ -4,17 +4,17 @@
 
 int inputMenuChoice()
 {
-    int choice;
+    int choice; // biến để lưu lựa chọn của người dùng
 
     while (true)
     {
-        if (cin >> choice)
+        if (cin >> choice) // nếu người dùng nhập một số hợp lệ, trả về lựa chọn đó
         {
-            return choice;
+            return choice; // trả về lựa chọn của người dùng
         }
 
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cin.clear(); // nếu người dùng nhập không phải là số, xóa lỗi và bỏ qua phần còn lại của dòng nhập
+        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // bỏ qua phần còn lại của dòng nhập để chuẩn bị cho lần nhập tiếp theo
         cout << "Invalid input. Please enter a number.\n";
         cout << "Enter your choice: ";
     }
@@ -22,10 +22,11 @@ int inputMenuChoice()
 
 void menu()
 {
-    int choice;
+    int choice; // biến để lưu lựa chọn của người dùng trong menu chính
 
     do
     {
+        clearScreen();
         cout << "\n========== CARO GAME ==========\n";
         cout << "1. Player vs Player\n";
         cout << "2. Player vs Bot\n";
@@ -42,55 +43,63 @@ void menu()
 
         switch (choice)
         {
-        case 1:
+        case 1: // nếu người dùng chọn 1, bắt đầu trò chơi Player vs Player
         {
             Game game;
             game.startPvP();
             break;
         }
-        case 2:
+        case 2: // nếu người dùng chọn 2, hiển thị menu phụ để chọn độ khó của bot và bắt đầu trò chơi Player vs Bot
         {
             playVsBotMenu();
             break;
         }
-        case 3:
+        case 3: // xem lại replay đã lưu, hiển thị menu phụ cho phần replay
         {
             replayMenu();
             break;
         }
 
-        case 4:
+        case 4: // xem thông tin người chơi
         {
+            clearScreen();
             PlayerManager playerManager;
             playerManager.showAllPlayers();
+            pauseScreen();
             break;
         }
 
-        case 5:
+        case 5: // tìm kiếm người chơi theo tên
         {
+            clearScreen();
             PlayerManager playerManager;
             playerManager.searchPlayerByName();
+            pauseScreen();
             break;
         }
 
-        case 6:
+        case 6: // tìm kiếm người chơi có thống kê thắng thua hòa tương đương nhau , theo level
         {
+            clearScreen();
             PlayerManager playerManager;
             playerManager.findEquivalentPlayer();
+            pauseScreen();
             break;
         }
 
-        case 7:
+        case 7: // hiển thị hướng dẫn chơi game
         {
+            clearScreen();
             showGuide();
+            pauseScreen();
             break;
         }
 
-        case 8:
+        case 8: // nếu người dùng chọn 8, thoát khỏi chương trình
             cout << "Thank you for playing!\n";
             break;
 
-        default:
+        default: // in báo nhập lựa chọn lỗi 
             cout << "Invalid choice. Please try again!\n";
         }
 
@@ -114,18 +123,25 @@ void replayMenu()
 
         choice = inputMenuChoice();
 
+        
         switch (choice)
         {
-        case 1:
+        case 1: // hiểu thị danh sách replay
+            clearScreen();
             replayManager.showReplayList();
+            pauseScreen();
             break;
 
-        case 2:
+        case 2: // xem replay theo id
+            clearScreen();
             replayManager.replayById();
+            pauseScreen();
             break;
 
-        case 3:
+        case 3: // xóa replay theo id
+            clearScreen();
             replayManager.deleteReplayById();
+            pauseScreen();
             break;
         }
 
@@ -136,6 +152,7 @@ void playVsBotMenu()
 {
     int choice;
 
+    //
     do
     {
         cout << "\n===== BOT MENU =====\n";
@@ -146,30 +163,31 @@ void playVsBotMenu()
         cout << "Enter your choice: ";
         choice = inputMenuChoice();
 
+        //
         switch (choice)
         {
-        case 1:
+        case 1: // bắt đầu trò chơi Player vs Bot với độ khó Easy
         {
             Game game;
             game.startPlayerVsBot(Easy);
             break;
         }
 
-        case 2:
+        case 2: // bắt đầu trò chơi Player vs Bot với độ khó Medium
         {
             Game game;
             game.startPlayerVsBot(Medium);
             break;
         }
 
-        case 3:
+        case 3: // bắt đầu trò chơi Player vs Bot với độ khó Hard
         {
             Game game;
             game.startPlayerVsBot(Hard);
             break;
         }
 
-        case 4:
+        case 4: // quay lại menu chính
             break;
 
         default:
@@ -179,6 +197,7 @@ void playVsBotMenu()
     } while (choice != 4);
 }
 
+//
 void showGuide()
 {
     cout << "\n========== GAME GUIDE ==========\n";

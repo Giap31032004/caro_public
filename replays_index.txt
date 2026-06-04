@@ -1,1 +1,6 @@
 1|ván 1|replay_1.txt
+2|no name|replay_2.txt
+3|yes name|replay_3.txt
+4|bot win|replay_4.txt
+5|abcs|replay_5.txt
+6|bot 2|replay_6.txt

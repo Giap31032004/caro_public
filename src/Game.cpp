@@ -1,6 +1,8 @@
 #include "../include/Game.h"
 
+#include <cstdlib>
 #include <iostream>
+#include <limits>
 
 using namespace std;
 
@@ -15,14 +17,16 @@ void Game::startPvP()
     player1.inputName();
     player2.inputName();
 
+    //
     board.resetBoard();
     moveHistory.clear();
 
     Player *currentPlayer = &player1;
 
+    //
     while (true)
     {
-        board.displayBoard();
+        displayCurrentBoard();
 
         int row, col;
 
@@ -30,15 +34,17 @@ void Game::startPvP()
 
         if (!board.placeMove(row, col, currentPlayer->getSymbol()))
         {
+            waitForEnter();
             continue;
         }
 
         moveHistory.push_back(
             {row, col, currentPlayer->getSymbol()});
 
+        //
         if (board.checkWin(row, col, currentPlayer->getSymbol()))
         {
-            board.displayBoard();
+            displayCurrentBoard();
 
             cout << currentPlayer->getName() << " wins!\n";
 
@@ -57,23 +63,15 @@ void Game::startPvP()
                     player1.getName());
             }
 
-            char saveChoice;
-
-            cout << "Do you want to save the game history? (y/n): ";
-            cin >> saveChoice;
-
-            if (saveChoice == 'y' || saveChoice == 'Y')
-            {
-                ReplayManager replayManager;
-                replayManager.saveReplay(moveHistory);
-            }
-
+            askSaveReplay();
+            clearScreen();
             break;
         }
 
+        //
         if (board.checkFull())
         {
-            board.displayBoard();
+            displayCurrentBoard();
 
             cout << "It's a draw!\n";
 
@@ -83,20 +81,12 @@ void Game::startPvP()
                 player1.getName(),
                 player2.getName());
 
-            char saveChoice;
-
-            cout << "Do you want to save the game history? (y/n): ";
-            cin >> saveChoice;
-
-            if (saveChoice == 'y' || saveChoice == 'Y')
-            {
-                ReplayManager replayManager;
-                replayManager.saveReplay(moveHistory);
-            }
-
+            askSaveReplay();
+            clearScreen();
             break;
         }
 
+        //
         if (currentPlayer == &player1)
         {
             currentPlayer = &player2;
@@ -112,23 +102,27 @@ void Game::startPlayerVsBot(BotLevel selectedLevel)
 {
     player1.inputName();
 
+    //
     Bot bot(
         selectedLevel,
         'O',
         player1.getSymbol());
 
+    //
     board.resetBoard();
     moveHistory.clear();
 
     bool playerTurn = true;
 
+    //
     while (true)
     {
-        board.displayBoard();
+        displayCurrentBoard();
 
         int row, col;
         char currentSymbol;
 
+        //
         if (playerTurn)
         {
             player1.inputMove(row, col);
@@ -136,25 +130,29 @@ void Game::startPlayerVsBot(BotLevel selectedLevel)
 
             if (!board.placeMove(row, col, currentSymbol))
             {
+                waitForEnter();
                 continue;
             }
         }
         else
         {
+            //
             bot.makeMove(board, row, col);
             currentSymbol = bot.getSymbol();
 
             board.placeMove(row, col, currentSymbol);
 
+            displayCurrentBoard();
             cout << "Bot moved at: " << row << " " << col << endl;
         }
 
         moveHistory.push_back(
             {row, col, currentSymbol});
 
+        //
         if (board.checkWin(row, col, currentSymbol))
         {
-            board.displayBoard();
+            displayCurrentBoard();
 
             if (playerTurn)
             {
@@ -165,40 +163,63 @@ void Game::startPlayerVsBot(BotLevel selectedLevel)
                 cout << "Bot wins!\n";
             }
 
-            char saveChoice;
-
-            cout << "Do you want to save the game history? (y/n): ";
-            cin >> saveChoice;
-
-            if (saveChoice == 'y' || saveChoice == 'Y')
-            {
-                ReplayManager replayManager;
-                replayManager.saveReplay(moveHistory);
-            }
-
+            askSaveReplay();
+            clearScreen();
             break;
         }
 
+        //
         if (board.checkFull())
         {
-            board.displayBoard();
+            displayCurrentBoard();
 
             cout << "It's a draw!\n";
 
-            char saveChoice;
-
-            cout << "Do you want to save the game history? (y/n): ";
-            cin >> saveChoice;
-
-            if (saveChoice == 'y' || saveChoice == 'Y')
-            {
-                ReplayManager replayManager;
-                replayManager.saveReplay(moveHistory);
-            }
-
+            askSaveReplay();
+            clearScreen();
             break;
         }
 
         playerTurn = !playerTurn;
     }
+}
+
+//
+void Game::displayCurrentBoard() const
+{
+    clearScreen();
+    board.displayBoard();
+}
+
+//
+void Game::askSaveReplay()
+{
+    char saveChoice;
+
+    cout << "Do you want to save the game history? (y/n): ";
+    cin >> saveChoice;
+
+    if (saveChoice == 'y' || saveChoice == 'Y')
+    {
+        ReplayManager replayManager;
+        replayManager.saveReplay(moveHistory);
+    }
+}
+
+//
+void Game::waitForEnter() const
+{
+    cout << "Press Enter to continue...";
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cin.get();
+}
+
+//
+void Game::clearScreen() const
+{
+#ifdef _WIN32
+    system("cls");
+#else
+    system("clear");
+#endif
 }
