@@ -169,30 +169,21 @@ void playVsBotMenu()
         case 1: // bắt đầu trò chơi Player vs Bot với độ khó Easy
         {
             Game game;
-            if (!game.startPlayerVsBot(Easy))
-            {
-                choice = 4;
-            }
+            game.startPlayerVsBot(Easy);
             break;
         }
 
         case 2: // bắt đầu trò chơi Player vs Bot với độ khó Medium
         {
             Game game;
-            if (!game.startPlayerVsBot(Medium))
-            {
-                choice = 4;
-            }
+            game.startPlayerVsBot(Medium);
             break;
         }
 
         case 3: // bắt đầu trò chơi Player vs Bot với độ khó Hard
         {
             Game game;
-            if (!game.startPlayerVsBot(Hard))
-            {
-                choice = 4;
-            }
+            game.startPlayerVsBot(Hard);
             break;
         }
 
@@ -220,5 +211,6 @@ void showGuide()
     cout << "8. If the board is full and nobody wins, the game is draw.\n";
     cout << "9. Replay lets you watch saved games by replay ID.\n";
     cout << "10. Player Information stores wins, losses, and draws.\n";
+    cout << "11. Search Player allows you to find players by name.\n";
     cout << "================================\n";
 }
