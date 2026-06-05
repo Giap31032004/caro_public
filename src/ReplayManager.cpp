@@ -15,9 +15,8 @@ void ReplayManager::saveReplay(const vector<Move> &moveHistory)
 {
     string replayName;
 
-    cin.ignore();
-    cout << "Enter replay name: ";
-    getline(cin, replayName);
+    cout << "Enter replay name: " << flush;
+    getline(cin >> ws, replayName);
 
     int id = 1;
 

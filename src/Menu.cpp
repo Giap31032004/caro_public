@@ -169,21 +169,30 @@ void playVsBotMenu()
         case 1: // bắt đầu trò chơi Player vs Bot với độ khó Easy
         {
             Game game;
-            game.startPlayerVsBot(Easy);
+            if (!game.startPlayerVsBot(Easy))
+            {
+                choice = 4;
+            }
             break;
         }
 
         case 2: // bắt đầu trò chơi Player vs Bot với độ khó Medium
         {
             Game game;
-            game.startPlayerVsBot(Medium);
+            if (!game.startPlayerVsBot(Medium))
+            {
+                choice = 4;
+            }
             break;
         }
 
         case 3: // bắt đầu trò chơi Player vs Bot với độ khó Hard
         {
             Game game;
-            game.startPlayerVsBot(Hard);
+            if (!game.startPlayerVsBot(Hard))
+            {
+                choice = 4;
+            }
             break;
         }
 

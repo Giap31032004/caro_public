@@ -6,3 +6,8 @@
 6|bot 2|replay_6.txt
 7|aaaaaa|replay_7.txt
 8|absjdksk|replay_8.txt
+9|win bot|replay_9.txt
+10|loss bot|replay_10.txt
+11|abcd|replay_11.txt
+12|bot save|replay_12.txt
+13|askdkasdnasd|replay_13.txt
