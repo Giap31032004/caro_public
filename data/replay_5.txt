@@ -1,0 +1,12 @@
+# Replay ID: 5
+# Replay Name: ung
+# Total Moves: 9
+2 4 X
+2 3 O
+1 4 X
+1 3 O
+3 4 X
+3 3 O
+4 4 X
+3 5 O
+5 4 X

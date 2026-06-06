@@ -1,0 +1,6 @@
+1|ung|replay_1.txt|9
+2|tung giap|replay_2.txt|9
+3|tung bot|replay_3.txt|30
+4|tung|replay_4.txt|50
+5|ung|replay_5.txt|9
+6|tung|replay_6.txt|14

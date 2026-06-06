@@ -1,0 +1,12 @@
+# Replay ID: 2
+# Replay Name: tung giap
+# Total Moves: 9
+2 3 X
+3 2 O
+2 2 X
+3 3 O
+2 4 X
+3 4 O
+2 5 X
+3 5 O
+2 1 X

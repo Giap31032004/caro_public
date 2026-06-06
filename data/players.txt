@@ -1,0 +1,7 @@
+giap 1 1 0
+tung 5 1 0
+nam 0 2 0
+tri 0 1 0
+turn 1 0 0
+tri2 0 1 0
+bach 0 1 0
