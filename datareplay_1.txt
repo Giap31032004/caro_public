@@ -1,0 +1,5 @@
+# Replay ID: 1
+# Replay Name: aaa
+# Total Moves: 2
+0 0 X
+1 0 O

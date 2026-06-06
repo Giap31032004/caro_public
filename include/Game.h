@@ -32,7 +32,6 @@ private:
     void displayHelp() const; // hiển thị hướng dẫn sử dụng lệnh và quy tắc chơi
     void askSaveReplay(); // hỏi người chơi có muốn lưu lại lịch sử trận đấu dưới dạng replay không, nếu có sẽ gọi ReplayManager để lưu moveHistory vào file
     void waitForEnter() const; // tạm dừng màn hình
-    void clearScreen() const; // xóa màn hình
 };
 
 #endif

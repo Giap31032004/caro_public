@@ -4,7 +4,7 @@
 #include <string>
 using namespace std;
 
-// module Player quản lý thông tin và hành động của người chơi trong trò chơi caro
+// module Player quản lý THÔNG TIN của người chơi như tên , symbol , thắng thua hòa 
 class Player
 {
 private:

@@ -6,7 +6,7 @@
 class Board
 {
 public:
-    static const int size = 10; // kích thước của bàn cờ là 10x10
+    static const int size = 10; // kích thước của bàn cờ là 10x10, có thể dễ dàng thay đổi nếu muốn mở rộng lên 15x15 hoặc 20x20
 
 private:
     int moveCount; // đếm số nước đi đã được thực hiện trên bàn cờ
@@ -16,9 +16,8 @@ private:
 
 public:
     Board();
-
-    void resetBoard(); // đặt lại bàn cờ về trạng thái ban đầu (tất cả ô trống, moveCount = 0, lastMoveRow/Col = -1)
-    char getCell(int row, int col) const; // trả về ký hiệu tại ô (row, col), hoặc '\0' nếu ngoài phạm vi
+    void resetBoard(); // đặt lại bàn cờ về trạng thái ban đầu (tất cả ô trống, moveCount = 0, lastMoveRow/Col = -1), cũng có thể để ở constructer
+    char getCell(int row, int col) const; // trả về symbol của ô cần kiểm tra 
     void setCellForSimulation(int row, int col, char symbol); // đặt ký hiệu vào ô (row, col) mà không cập nhật moveCount hay lastMoveRow/Col, dùng cho việc mô phỏng nước đi của bot
     bool isInsideBoard(int row, int col) const; // kiểm tra xem (row, col) có nằm trong phạm vi của bàn cờ hay không
     bool placeMove(int row, int col, char symbol); // cố gắng đặt ký hiệu vào ô (row, col), nếu thành công cập nhật moveCount và lastMoveRow/Col, trả về true nếu nước đi hợp lệ, false nếu ô đã có người đi hoặc ngoài phạm vi

@@ -10,6 +10,7 @@
 
 using namespace std;
 // module Menu quản lý giao diện menu chính và các menu phụ của trò chơi caro
+
 int inputMenuChoice(); // hàm nhập lựa chọn của người dùng trong menu, đảm bảo nhập hợp lệ tránh lỗi khi người dùng nhập không phải là số sẽ nhập lại nhiều lần
 void menu(); // hàm hiển thị menu chính và xử lý lựa chọn của người dùng
 void replayMenu(); // hàm hiển thị menu phụ cho phần replay, cho phép người dùng xem danh sách replay, xem replay theo ID hoặc xóa replay theo ID

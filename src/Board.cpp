@@ -24,38 +24,38 @@ void Board::resetBoard()
 void Board::displayBoard() const
 {
     cout << "    ";
-    for (int col = 0; col < size; col++) 
+    for (int col = 0; col < size; col++)  // in số cột ở đầu mỗi cột để người chơi dễ nhập nước đi
     {
         cout << " " << col << "  ";
     }
     cout << endl;
 
-    for (int row = 0; row < size; row++)
+    for (int row = 0; row < size; row++) // lặp qua tất cả hàng của bàn cờ để hiển thị
     {
         cout << "   ";
-        for (int col = 0; col < size; col++)
+        for (int col = 0; col < size; col++) // in đường kẻ ngang giữa các hàng để tạo thành lưới cho bàn cờ
         {
             cout << "|---";
         }
         cout << "|\n";
 
-        cout << " " << row << " ";
-        for (int col = 0; col < size; col++)
+        cout << " " << row << " "; // in số hàng ở đầu mỗi hàng để người chơi dễ nhập nước đi
+        for (int col = 0; col < size; col++) 
         {
             if (row == lastMoveRow && col == lastMoveCol)
             {
-                cout << "|[" << board[row][col] << "]";
+                cout << "|[" << board[row][col] << "]"; // nếu ô này là nước đi cuối cùng, hiển thị nó trong dấu ngoặc vuông để đánh dấu
             }
             else
             {
-                cout << "| " << board[row][col] << " ";
+                cout << "| " << board[row][col] << " "; // hiển thị ký hiệu tại ô (row, col), có thể là 'X', 'O', hoặc ' ' (trống) với định dạng để tạo thành lưới cho bàn cờ
             }
         }
         cout << "|\n";
     }
 
     cout << "   ";
-    for (int col = 0; col < size; col++)
+    for (int col = 0; col < size; col++) // in đường kẻ ngang cuối cùng dưới cùng của bàn cờ để tạo thành lưới cho bàn cờ
     {
         cout << "|---";
     }
@@ -64,7 +64,7 @@ void Board::displayBoard() const
 
 bool Board::checkFull() const
 {
-    return moveCount >= size * size; 
+    return moveCount >= size * size;  // nếu số nước đi đã thực hiện lớn hơn hoặc bằng tổng số ô trên bàn cờ, nghĩa là bàn cờ đã đầy
 }
 
 bool Board::isInsideBoard(int row, int col) const
