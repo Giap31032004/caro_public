@@ -1,26 +1,41 @@
-#ifndef REPLAY_MANAGER_H
-#define REPLAY_MANAGER_H
+#ifndef PLAYER_MANAGER_H
+#define PLAYER_MANAGER_H
 
-#include <string>
 #include <vector>
+#include <string>
 
-#include "Board.h"
-#include "Move.h"
+#include "Player.h"
 
 using namespace std;
 
-class ReplayManager
+class PlayerManager
 {
 private:
-    string indexFileName;
+    vector<Player> players;
+    string fileName;
 
 public:
-    ReplayManager();
+    PlayerManager();
 
-    void saveReplay(const vector<Move> &moveHistory);
-    void showReplayList();
-    void replayById();
-    void deleteReplayById();
+    void loadPlayers();
+
+    void savePlayers();
+
+    int findPlayerIndex(string name);
+
+    void addPlayerIfNotExist(string name);
+
+    void updateWinLoss(string winnerName,
+                       string loserName);
+
+    void updateDraw(string player1Name,
+                    string player2Name);
+
+    void showAllPlayers();
+
+    void searchPlayerByName();
+
+    void findEquivalentPlayer();
 };
 
 #endif
