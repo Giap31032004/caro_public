@@ -1,5 +1,5 @@
 #ifndef MOVE_H
-#define Move_H
+#define MOVE_H
 
 // module Move quản lý thông tin về một nước đi trong trò chơi caro
 struct Move
