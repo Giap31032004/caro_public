@@ -151,7 +151,7 @@ namespace
 
 ReplayManager::ReplayManager()
 {
-    indexFileName = "data\\replays_index.txt";
+    indexFileName = "data/replays_index.txt";
 }
 
 void ReplayManager::saveReplay(const vector<Move> &moveHistory)
@@ -185,7 +185,7 @@ void ReplayManager::saveReplay(const vector<Move> &moveHistory)
     }
 
     string replayFileName = "replay_" + to_string(id) + ".txt";
-    ofstream replayFile("data\\" + replayFileName);
+    ofstream replayFile("data/" + replayFileName);
 
     if (!replayFile)
     {
