@@ -118,7 +118,7 @@ namespace
 
 PlayerManager::PlayerManager()
 {
-    fileName = "data\\players.txt";
+    fileName = "data/players.txt";
 }
 
 void PlayerManager::loadPlayers()
