@@ -198,19 +198,22 @@ void playVsBotMenu()
 }
 
 //
+
 void showGuide()
 {
-    cout << "\n========== GAME GUIDE ==========\n";
-    cout << "1. Board size: 10x10.\n";
-    cout << "2. Player 1 uses X, Player 2/Bot uses O.\n";
-    cout << "3. Enter move by row and column, for example: 3 5.\n";
-    cout << "4. Row and column must be from 0 to 9.\n";
-    cout << "5. You cannot choose a cell that already has X or O.\n";
-    cout << "6. The first player who has 5 symbols in a row wins.\n";
-    cout << "7. Winning lines can be horizontal, vertical, or diagonal.\n";
-    cout << "8. If the board is full and nobody wins, the game is draw.\n";
-    cout << "9. Replay lets you watch saved games by replay ID.\n";
-    cout << "10. Player Information stores wins, losses, and draws.\n";
-    cout << "11. Search Player allows you to find players by name.\n";
-    cout << "================================\n";
+    cout << "\n====================== GAME GUIDE ======================\n";
+    
+    cout << "\n--- GAMEPLAY RULES ---\n";
+    cout << " [1] Board  : 10x10 grid. Rows and columns range from 0 to 9.\n";
+    cout << " [2] Symbols: Player 1 uses [X], Player 2/Bot uses [O].\n";
+    cout << " [3] Moves  : Enter empty row and column to play.\n";
+    cout << " [4] WINNING: First to align 5 symbols (horizontal, vertical, diagonal).\n";
+    cout << " [5] DRAW   : The board is full and nobody achieves 5 in a row.\n";
+
+    cout << "\n--- SYSTEM FEATURES ---\n";
+    cout << " [6] Replay       : Watch previously saved games by Replay ID.\n";
+    cout << " [7] Player Info  : View history of wins, losses, and draws.\n";
+    cout << " [8] Search Player: Look up a specific player's stats by name.\n";
+    
+    cout << "========================================================\n";
 }
