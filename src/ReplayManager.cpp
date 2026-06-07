@@ -403,7 +403,7 @@ void ReplayManager::deleteReplayById()
         return;
     }
     // ghi index moi vao file, thay the index cu, giu lai cac index khong bi xoa.
-    ofstream output("data\\replays_index.tmp");
+    ofstream output("data/replays_index.tmp");
 
     if (!output)
     {
